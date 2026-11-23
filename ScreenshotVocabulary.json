@@ -1,6 +1,6 @@
 {
   "_说明": "截屏识别用到的关键词都在这里。改这个文件即可支持新的平台、按钮或字段标签；数组顺序就是匹配优先级。规则对象：any 任一出现即命中；allOfAny 是「每组至少出现一个」；ignoreCase 忽略大小写；noneOf 里任一出现则整条规则不命中。",
-  "version": 2,
+  "version": 3,
   "sourceAppRules": [
     {
       "name": "微信支付",
@@ -1025,7 +1025,7 @@
     "品牌"
   ],
   "accountProfile": {
-    "_说明": "账户校准截图（银行卡详情、白条/月付/花呗主页与账单页）用到的词。fields 里每个字段的 labels 是页面上的标签（顺序即优先级），excludedPrefixes 是紧挨标签前、表示「不是这个字段」的词。新增先付后还产品的标签、特征词、默认账期、补截提示都在 payLaterProducts。",
+    "_说明": "账户校准截图（银行卡详情、白条/月付/花呗主页与账单页）用到的词。fields 里每个字段的 labels 是页面上的标签（顺序即优先级），excludedPrefixes 是紧挨标签前、表示「不是这个字段」的词。新增先付后还产品的标签、特征词、默认账期、补截提示都在 payLaterProducts。 fundingSourceMarkers：含银行名又含这些词的行是「从哪张卡扣款」，不当作这张截图是那张卡。labelBlockerMarkers：含这些词的行是营销条，里面的「本月账单」等不当标签。paidOffMarkers：与「M月D日应还」同一行表示该期已还清。cycleRangeLabels：后跟「MM-DD至MM-DD」的入账周期，用来推出账单日和判断金额是否已出账。",
     "profileMarkers": [
       "信用额度",
       "固定额度",
@@ -1455,6 +1455,44 @@
       "availableLimit": "App 首页或卡片详情页",
       "billingDay": "账单页或卡片详情页",
       "dueDay": "账单页或卡片详情页"
-    }
+    },
+    "fundingSourceMarkers": [
+      "自动扣款",
+      "扣款",
+      "代扣",
+      "还款账户",
+      "还款卡",
+      "还款方式",
+      "自动还款"
+    ],
+    "labelBlockerMarkers": [
+      "达标",
+      "特权",
+      "已解锁",
+      "领取",
+      "奖励",
+      "红包",
+      "返现",
+      "立减",
+      "提额",
+      "升级",
+      "攻略",
+      "计算器",
+      "您有",
+      "计入",
+      "，"
+    ],
+    "paidOffMarkers": [
+      "已还清",
+      "已结清",
+      "无需还款"
+    ],
+    "cycleRangeLabels": [
+      "入账周期",
+      "账单周期",
+      "消费周期",
+      "记账周期",
+      "出账周期"
+    ]
   }
 }
